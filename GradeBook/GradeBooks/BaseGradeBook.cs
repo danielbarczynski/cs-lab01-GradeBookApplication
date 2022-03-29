@@ -14,7 +14,7 @@ namespace GradeBook.GradeBooks
         public string Name { get; set; }
         public List<Student> Students { get; set; }
         public GradeBookType Type { get; set; }
-        public bool IsWeighted  { get; set; }
+        public bool IsWeighted { get; set; }
 
         public BaseGradeBook(string name, bool isWeighted)
         {
@@ -122,6 +122,7 @@ namespace GradeBook.GradeBooks
                 case 'F':
                     return 0;
             }
+            //if (studentType == StudentType.Honors || (studentType == StudentType.DualEnrolled)   
             return 0;
         }
 
@@ -266,7 +267,7 @@ namespace GradeBook.GradeBooks
                              from type in assembly.GetTypes()
                              where type.FullName == "GradeBook.GradeBooks.StandardGradeBook"
                              select type).FirstOrDefault();
-            
+
             return JsonConvert.DeserializeObject(json, gradebook);
         }
     }
